@@ -1,10 +1,13 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 
 //Database
 const database = require("./database");
 
 //Initialise express
 const Booky = express();
+Booky.use(bodyParser.urlencoded({extended: true}));
+Booky.use(bodyParser.json());
 
 /*
     Route         /
@@ -142,6 +145,70 @@ Booky.get("/publications/book/:isbn",(req,res) => {
         return res.json({error: `No publications found with book of ${req.params.isbn}`});
     }
     return res.json({author: getSpecificPublication});
+});
+
+//POST
+/*
+    Route         /book/new
+    Description   Add new book
+    Access        Public
+    Parameter     NONE
+    Methods       POST
+*/
+Booky.post("/book/new",(req,res) => {
+    const newBook = req.body;
+    database.books.push(newBook);
+    return res.json({upddatedBooks: database.books});
+});
+
+/*
+    Route         /author/new
+    Description   Add new author
+    Access        Public
+    Parameter     NONE
+    Methods       POST
+*/
+Booky.post("/author/new",(req,res) => {
+    const newAuthor = req.body;
+    database.author.push(newAuthor);
+    return res.json({updatedAuthors: database.author});
+});
+
+/*
+    Route         /publication/new
+    Description   Add new publication
+    Access        Public
+    Parameter     NONE
+    Methods       POST
+*/
+Booky.post("/publication/new",(req,res) => {
+    const newPublication = req.body;
+    database.publication.push(newPublication);
+    return res.json({updatedPublications: database.publication});
+});
+
+/*
+    Route         /publication/newc
+    Description   Add new publication only if it is not present, if present update it
+    Access        Public
+    Parameter     NONE
+    Methods       POST
+*/
+Booky.post("/publication/newc",(req,res) => {
+    const newPublication = req.body;
+    var check = database.publication.map((pub) =>{
+        if(pub.name === newPublication.name){
+            pub.books = newPublication.books;
+            return res.json({updatedPublications: database.publication});
+        }
+        else{
+            return 0;
+        }
+    });
+    if(parseInt(check) === 0){
+        database.publication.push(newPublication);
+        return res.json({updatedPublications: database.publication});   
+    }
 });
 
 Booky.listen(3000, () => {

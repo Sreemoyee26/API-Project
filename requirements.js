@@ -31,8 +31,8 @@
 
 // POST REQUEST
 // *Add New Book - DONE
-// *Add New Publication - DONE
 // *Add New Author - DONE
+// *Add New Publication - DONE
 
 // PUT
 // *Update Book details if author is changed - DONE
