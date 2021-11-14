@@ -36,8 +36,8 @@
 
 // PUT
 // *Update Book details if author is changed - DONE
+// *Update Book details if publication is changed - DONE
 
 // DELETE
 // *Delete a book - DONE
-// *Delete author from book - DONE
 // *Delete author from book and related book from author - DONE
