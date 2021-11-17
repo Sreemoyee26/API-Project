@@ -27,12 +27,13 @@
 // PUBLICATIONS
 // *To get all the publications - DONE
 // *To get a specific publication - DONE
-// *To get a list of publications based on a book  - DONE
+// *To get a specific publication based on a book  - DONE
 
 // POST REQUEST
 // *Add New Book - DONE
 // *Add New Author - DONE
 // *Add New Publication - DONE
+// *Update publication if present else create new - DONE
 
 // PUT
 // *Update Book details if author is changed - DONE
