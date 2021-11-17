@@ -317,7 +317,6 @@ Booky.put("/author/update/book/:isbn", async (req,res) => {
 */
 Booky.put("/publication/update/book/:isbn", async (req,res) => {
     //Update publication database
-    /*
     const update = await publicationModel.findOneAndUpdate(
         {
             books: req.params.isbn
@@ -331,7 +330,7 @@ Booky.put("/publication/update/book/:isbn", async (req,res) => {
             new: true
         }
     );
-    */
+    
     const updatedPublication = await publicationModel.findOneAndUpdate(
         {
             id: req.body.newPublication
